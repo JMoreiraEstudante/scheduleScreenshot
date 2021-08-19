@@ -50,8 +50,7 @@ def task():
             print("noticia adicionada!")
 
 def main():   
-    #colocar sempre ao 12 30 dps
-    schedule.every(3).minutes.do(task)
+    schedule.every().day.at("12:30").do(task)
     while True:
         schedule.run_pending()
         time.sleep(1)
