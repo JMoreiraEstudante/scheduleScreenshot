@@ -1,5 +1,2 @@
-# brasilManchetes
-<p>
-  Uma aplicação web usando stack MERN que exibe manchetes dos sites brasileiros de notícias.<br />
-  A raspagem de dados dos sites de notícias: <https://github.com/JMoreiraEstudante/scheduleScreenshot>
-</p>
+# scheduleScreenshot
+Permite a captura de tela de acordo com um cronograma de forma automática.
