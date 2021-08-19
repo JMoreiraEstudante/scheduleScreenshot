@@ -19,13 +19,13 @@ def getClient():
 def addNoticia(client, jornal):
     db = client.Noticias
     screenshot = db.screenshot
-    image = Image.open("images/screenshot.png")
+    image = Image.open("images/compressed.png")
     image_bytes = io.BytesIO()
     image.save(image_bytes, format='PNG')
 
     screenshotDocument = {
         "jornal" : jornal,
-        "data": datetime.now().strftime("%d/%m/%Y %H:%M:%S"), 
+        "data": datetime.now(), 
         "imagem": image_bytes.getvalue()
     }
     screenshot.insert_one(screenshotDocument)

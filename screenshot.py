@@ -19,8 +19,10 @@ def screenshot(url):
 
 def compress():
     image = Image.open("images/screenshot.png")
-    new_image = image.resize((960,540), resample=1)
-    new_image.save("images/compressed.png")
+    new_image = image.resize((1280,720), resample=1)
+    w, h = new_image.size
+    #(left, up, right, down)
+    new_image.crop((400, 0, w-400, h)).save("images/compressed.png")
     print("foto comprimida!")
 
 def task():
@@ -38,10 +40,13 @@ def task():
             print("noticia adicionada!")
 
 def main():   
+    '''
+    colocar 3 vezes ao dia
     schedule.every(120).minutes.do(task)
     while True:
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(1)'''
+    task() 
 
 if __name__ == "__main__":
     main()
