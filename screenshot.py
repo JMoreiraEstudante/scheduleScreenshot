@@ -3,18 +3,27 @@ from PIL import Image
 import time
 import schedule
 import db
+import os
 
 def screenshot(url):
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+    #chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+
+    #browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+    #local one
     browser = webdriver.Chrome(options=chrome_options, executable_path='C:/Users/joao/Documents/chromedriver.exe')
+
     browser.get(url)
     browser.execute_script("document.body.style.zoom='50%'")
     browser.set_window_size(1920, 1080, browser.window_handles[0])
     browser.maximize_window()
     time.sleep(5)
     browser.save_screenshot("images/screenshot.png")
+    browser.quit()
     print("screenshot deu certo!")
 
 def compress():
@@ -40,13 +49,11 @@ def task():
             print("noticia adicionada!")
 
 def main():   
-    '''
-    colocar 3 vezes ao dia
-    schedule.every(120).minutes.do(task)
+    #colocar sempre ao 12 30 dps
+    schedule.every(3).minutes.do(task)
     while True:
         schedule.run_pending()
-        time.sleep(1)'''
-    task() 
+        time.sleep(1)
 
 if __name__ == "__main__":
     main()

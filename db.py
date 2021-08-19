@@ -33,7 +33,7 @@ def addNoticia(client, jornal):
 def main():   
     client = getClient()
     if client:
-        addNoticia(client)
+        addNoticia(client, "teste")
 
 if __name__ == "__main__":
     main()
@@ -41,9 +41,7 @@ if __name__ == "__main__":
 #read the document image
 '''from bson.binary import Binary
 import matplotlib.pyplot as plt
-
 image = screenshot.find_one()
-
 pil_img = Image.open(io.BytesIO(image['imagem']))
 plt.imshow(pil_img)
 plt.show()'''
